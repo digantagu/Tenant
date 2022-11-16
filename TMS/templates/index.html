@@ -1,0 +1,171 @@
+{% extends 'base.html' %}Namita Talukdar
+
+{% block title %} Tenant management System| {% endblock title %}
+
+{% block body %}
+
+<div class="right-panel" id="right-panel">
+    <header class="header" id="header">
+        <div class="header-menu">
+            <div class="col-sm-7">
+                <a class="menutoggle pull-left" id="menuToggle"><i class="fa fa fa-tasks"></i></a>
+                <div class="header-left">
+                    <div class="dropdown for-message">
+                        <button aria-expanded="false" aria-haspopup="true"
+                                class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" id="message" type="button">
+                            <i class="ti-email"></i>
+                            <span class="count bg-primary">9</span>
+                        </button>
+                        <div aria-labelledby="message" class="dropdown-menu">
+                            <p class="red">You have 4 Mails</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <div class="user-area dropdown float-right">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#">
+                        <img alt="User Avatar" class="user-avatar rounded-circle" src="/static/images/admin.jpg">
+                    </a>
+                    <div class="user-menu dropdown-menu">
+
+                        <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content mt-3">
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-flat-color-1">
+                <div class="card-body pb-0">
+                    <h4 class="mb-0">
+                        <span class="count">{{ti}}</span>
+                    </h4>
+                    <p class="text-light">Total Tentants Registered</p>
+
+                    <div class="chart-wrapper px-0" height="70" style="height:40px;">
+                        <canvas id="widgetChart1"></canvas>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-flat-color-2">
+                <div class="card-body pb-0">
+                    <h4 class="mb-0">
+                        <span class="count">{{active}}</span>
+                    </h4>
+                    <p class="text-light">Active Tenants</p>
+
+                    <div class="chart-wrapper px-0" height="70" style="height:40px;">
+                        <canvas id="widgetChart2"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-flat-color-3">
+                <div class="card-body pb-0">
+                    <h4 class="mb-0">
+                        <span class="count">{{hon}}</span>
+                    </h4>
+                    <p class="text-light">Total Houses</p>
+
+                </div>
+
+                <div class="chart-wrapper px-0" height="70" style="height:40px;">
+                    <canvas id="widgetChart3"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-flat-color-4">
+                <div class="card-body pb-0">
+                    <h4 class="mb-0">
+                        <span class="count">{{free}}</span>
+                    </h4>
+                    <p class="text-light">Vacant Houses</p>
+
+                    <div class="chart-wrapper px-3" height="70" style="height:40px;">
+                        <canvas id="widgetChart4"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4 class="card-title mb-0">Last payments</h4>
+                            <div class="small text-muted">{{dat}}</div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper mt-4">
+                        <canvas height="200" id="trafficChart" style="height:5px;"></canvas>
+                    </div>
+                    <div class="card-footer">
+                        <ol type="1">
+                            {% for i in pstat %}
+                            <li>{{i.name}}&nbsp&nbspAmount- {{i.amount}}&nbsp&nbspDate - {{i.date}}</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">Total Profit</div>
+                            <div class="stat-digit">{{total}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">Total due</div>
+                            <div class="stat-digit">{{due}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

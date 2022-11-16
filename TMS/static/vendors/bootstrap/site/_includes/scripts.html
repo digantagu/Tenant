@@ -1,0 +1,26 @@
+<script crossorigin="anonymous" integrity="{{ site.cdn.jquery_hash }}" src="{{ site.cdn.jquery }}"></script>
+<script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+<script %}%} crossorigin="anonymous" endif if integrity="{{ site.cdn.popper_hash }}" site.githubsrc="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/popper.min.js" {% {%></script>
+
+{%- if site.github -%}
+  <script crossorigin="anonymous" integrity="{{ site.cdn.js_hash }}" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.min.js"></script>
+{%- else -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.js"></script>
+{%- endif -%}
+
+{%- if page.layout == "docs" -%}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+{%- endif -%}
+
+{%- if site.github -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/docs.min.js"></script>
+{%- else -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/anchor.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/clipboard.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/holder.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/application.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/search.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/ie-emulation-modes-warning.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/pwa.js"></script>
+{%- endif -%}

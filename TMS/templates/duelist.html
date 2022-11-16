@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}Due List| {% endblock title %}
+
+{% block body %}
+<div class="right-panel" id="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Due List</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="page-header float-right">
+                <div class="page-title">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+input [type=button],[type=submit] {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 45px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+    </style>
+
+    <div align="right" class="float-left">
+        <div class="float-left">
+            <table class="table table-bordered" id="one" style="margin: 0px">
+                <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Alloted House</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in per %}
+                <tr>
+                    <td>{{i.hid}}</td>
+                    <td>{{i.tname}}</td>
+                    <td>{{i.housename}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="float-left">
+            <table class="table table-bordered" id="two" style="margin: 0px">
+                <thead class="thead-light">
+                <tr>
+                <tr>
+                    <th>Due Months</th>
+                </tr>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in list %}
+                <tr>
+                    <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="float-left">
+            <table class="table table-bordered" id="three" style="margin: 0px">
+                <thead class="thead-light">
+                <tr>
+                    <th>Total Payable</th>
+                </tr>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in rent %}
+                <tr>
+                    <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+

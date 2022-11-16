@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Make Payment| {% endblock title %}
+
+{% block body %}
+<div class="right-panel" id="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Make Payment for {{pn}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="page-header float-right">
+                <div class="page-title">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post">
+
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Tenant</th>
+                <th scope="col">House</th>
+                <th scope="col">Rent/Month</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in pay %}
+            <tr>
+                <th scope="row">{{p.tname}}</th>
+                <td>{{p.house}}</td>
+                <td>5000</td>
+                <td>
+                    <input class="amount" id="amount" maxlength="3" name="amount" placeholder="Pay Amount" required
+                           size="5" type="number">
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            <div class="container">
+                {% csrf_token %}
+                <button id="submit" name="submit" type="submit">Make Payment</button>
+            </div>
+        </center>
+    </form>
+    <style>
+input [type=button],[type=submit] {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #bd2424;
+  border: none;
+  color: white;
+  padding: 6px 40px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+    </style>
+
+
+</div>
+
+{% endblock body %}

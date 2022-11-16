@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="">
+<html class="no-js lt-ie9 lt-ie8" lang="">
+<html class="no-js lt-ie9" lang="">
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="Tenant Management System by InstaITSolutions" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <link href="apple-icon.png" rel="apple-touch-icon">
+    <link href="/static/favicon.ico" rel="shortcut icon">
+
+    <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/vendors/themify-icons/css/themify-icons.css" rel="stylesheet">
+    <link href="/static/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/static/vendors/selectFX/css/cs-skin-elastic.css" rel="stylesheet">
+    <link href="/static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet">
+
+
+    <link href="/static/assets/css/style.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <title>{% block title %} {% endblock title %}Tenant management system</title>
+</head>
+
+<body>
+<aside class="left-panel" id="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                    data-target="#main-menu" data-toggle="collapse" type="button">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="/index"><img alt="Logo" src="/static/images/logo.png"></a>
+            <a class="navbar-brand hidden" href="/index"><img alt="Logo" src="/static/images/logo.png"></a>
+        </div>
+
+        <div class="main-menu collapse navbar-collapse" id="main-menu">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/index"> <i class="menu-icon fa fa-dashboard"></i> TMS Dashboard </a>
+                </li>
+                <h3 class="menu-title">Modules</h3><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-laptop"></i>Tenants</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-bars"></i><a href="/tenantregister">Register</a></li>
+                        <li><i class="fa fa-book"></i><a href="/tenantlist">Tenant's List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-table"></i>Landlords</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-table"></i><a href="/registerlandlord">Register</a></li>
+                        <li><i class="fa fa-table"></i><a href="/landlordlist">Landlord's List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-th"></i>Properties</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="/registerproperty">Register</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="/propertylist">Property List</a></li>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-th"></i>Houses</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="/registerhouse">Register</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="/houselist">List of Houses</a></li>
+                        <li><i class="fa fa-book"></i><a href="/allocated">House Allocation List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-th"></i>Payments</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="/payrent">Pay Rent</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="/paymentstatus">Payment Status</a></li>
+                    </ul>
+                </li>
+                <h3 class="menu-title">Reports</h3>
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-glass"></i>Reports</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="/duelist">Due List</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="/turnover">Total Turnover</a></li>
+                    </ul>
+                </li>
+
+                <h3 class="menu-title">Invoices</h3><!-- /.menu-title -->
+
+                <li class="menu-item-has-children dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                       href="#"> <i class="menu-icon fa fa-tasks"></i>Invoices</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="/invoice">Prepare
+                            Invoice</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</aside>
+
+<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+<script src="/static/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/static/assets/js/main.js"></script>
+
+
+<script src="/static/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+<script src="/static/assets/js/dashboard.js"></script>
+<script src="/static/assets/js/widgets.js"></script>
+<script src="/static/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+
+
+<script src="/static/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<!---<script src="/static/vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>--->
+
+
+<script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+
+
+</script>
+
+
+{% block body %} {% endblock body %}
+
+</body>
+
+</html>

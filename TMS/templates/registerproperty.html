@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Register Property| {% endblock title %}
+
+{% block body %}
+<div class="right-panel" id="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Property Registration Form</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="page-header float-right">
+                <div class="page-title">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+body
+{font-family: Arial, Helvetica, sans-serif;
+}
+* {box-sizing: border-box;}
+
+input[type=text],input[type=email], select,textarea {
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input [type=button],[type=submit] {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 40px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container{
+
+  margin: auto;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+
+  }
+
+
+
+
+  </style>
+
+    <center><h3><br>Enter Property Details</h3></center>
+    <center>
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                <input class="name" name="name" placeholder="Property/Apartment name" required type="text">&nbsp
+                <input class="hn" name="hn" placeholder="House/Property No" required type="text">&nbsp
+                <input id="location" name="location" placeholder="Location" required type="text">
+                &nbsp
+                <select name="landlord">
+                    <option>Select Landlord</option>
+                    {% for i in var %}
+                    <option>{{i.name}}</option>
+                    {% endfor %}
+                </select>&nbsp;&nbsp;
+                <br><br>
+                <button id="submit" name="submit" type="submit">Submit</button>
+            </form>
+        </div>
+    </center>
+
+
+</div>
+
+</div>
+
+
+{% endblock body %}
+
+
