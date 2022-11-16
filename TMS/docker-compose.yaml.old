@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db:
+    environment:
+      - POSTGRES_HOST= host.docker.internal
+      - POSTGRES_DB= tenant
+      - POSTGRES_USER= postgres
+      - POSTGRES_PASSWORD= abc123
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+       - "5432:5432"
+    restart: unless-stopped
+
+  app:
+     container_name: django_tenant
+     image: app:django
+     build: .
+     command: python manage.py runserver 0.0.0.0:8000
+     ports:
+      - "8000:8000"
+     depends_on:
+       - db

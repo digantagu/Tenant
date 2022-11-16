@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+
+{% block title %}Invoice Details| {% endblock title %}
+
+{% block body %}
+
+<div class="right-panel" id="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Prepare Invoice</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="page-header float-right">
+                <div class="page-title">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+        text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+
+
+
+
+
+
+
+    </style>
+    <div class="invoice-box">
+        <center><strong>Invoice</strong></center>
+        <br>
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="/static/logo_black.png" style="width:100%; max-width:300px;">
+                            </td>
+                            <td>
+                                Invoice ID#: {{iid}}<br>
+                                Created: {{today}}<br>
+                                Duedate: {{duedate}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Owner Address:<br>
+                                Diganta Talukdar<br>
+                                7002595409<br>
+                                Airport, Borjhar<br>
+                                Ghy - 781015
+                            </td>
+                            <td>
+                                Tenant:<br>
+                                {{tname}}<br>
+                                {{email}}<br>
+                                {{phone}}<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>
+                    Payment Details for {{month}}
+                </td>
+                <td>
+                    NetBanking/Cash/Digital
+                </td>
+            </tr>
+            <tr class="details">
+                <td>
+                    Account No : 324102598474<br>
+                    Bank : SBI<br>
+                    IFSC : SBIN00257
+                </td>
+                <td>PhonePe : 700595409</td>
+            </tr>
+            <tr class="heading">
+                <td>
+                    House
+                </td>
+                <td>
+                    Rent/Month
+                </td>
+            </tr>
+            <tr class="item">
+                <td>
+                    {{house}}
+                </td>
+                <td>
+                    {{hrent}}
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>
+                    Electricity
+                </td>
+                <td>
+                    Unit/Month
+                </td>
+            </tr>
+            <tr class="item">
+                <td>
+                    Previous Reading
+                </td>
+                <td>
+                    {{unit}}
+                </td>
+            </tr>
+            <tr class="item">
+                <td>
+                    Current Reading
+                </td>
+                <td>
+                    {{unit}}
+                </td>
+            </tr>
+            <tr class="item">
+                <td>
+                    Unit Difference
+                </td>
+                <td>
+                    {{unit}}
+                </td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td>
+                    Total: {{hrent}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <center>
+        <button onclick="window.print()">Print this page</button>
+    </center>
+</div>
+
+
+{% endblock body %}

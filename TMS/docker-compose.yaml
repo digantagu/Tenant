@@ -1,0 +1,35 @@
+version: '3'
+services:
+  django:
+    container_name: django_tenant
+    image: django_test
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgdb
+
+  pgdb:
+    container_name: postgres_db
+    image: postgres
+    environment:
+      - POSTGRES_DB= postgres
+      - POSTGRES_USER= postgres
+      - POSTGRES_PASSWORD= postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+
+    ports:
+      - "5430:5432"
+    restart: unless-stopped
+
+
+
+
+
+
+
+
+
