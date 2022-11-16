@@ -20,7 +20,6 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
       - ./data/db:/var/lib/postgresql/data
-
     ports:
       - "5430:5432"
     restart: unless-stopped
