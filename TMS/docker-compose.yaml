@@ -1,28 +1,42 @@
-version: '3'
+version: '3.8'
 services:
-  django:
-    container_name: django_tenant
-    image: django_test
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
-    depends_on:
-      - pgdb
-
   pgdb:
     container_name: postgres_db
     image: postgres
+    restart: always
     environment:
+      - POSTGRES_USER=postgres1
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB= postgres
-      - POSTGRES_USER= postgres
-      - POSTGRES_PASSWORD= postgres
       - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - '5432:5432'
     volumes:
       - ./data/db:/var/lib/postgresql/data
+
+  django:
+    container_name: django_tenant
+    build:
+      context: ./
+    image: django_test
+    depends_on:
+      - pgdb
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
-      - "5430:5432"
-    restart: unless-stopped
+      - 8000:8000
+    environment:
+      NODE_ENV: production
+      DB_HOST: pgdb
+      DB_PORT: 5432
+      DB_USER: postgres1
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+    links:
+      - pgdb
+
+volumes:
+  pgdb:
+    driver: local
 
 
 
